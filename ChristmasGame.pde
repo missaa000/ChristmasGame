@@ -16,8 +16,8 @@ int     textType;
 //ライトのタイム
 int     time;
 //音楽関連
-Minim minim;
-AudioPlayer song;
+//Minim minim;
+//AudioPlayer song;
 
 //速くなるタイミング
 public static final int time1 =  30;
@@ -72,8 +72,8 @@ void setup(){
   textFlag = true;
   textFont(font);  
   //音楽ロード
-  minim    = new Minim(this);
-  song     = minim.loadFile("music/ChristmasDay.mp3");
+  //minim    = new Minim(this);
+  //song     = minim.loadFile("music/ChristmasDay.mp3");
   
   //初めはタイトル画面
   gameStatus = 0;
@@ -370,11 +370,11 @@ void right(){
 
 }
 
-void stop(){
-  song.close();
-  minim.stop();
-  super.stop();
-}
+//void stop(){
+  //song.close();
+  //minim.stop();
+  //super.stop();
+//}
 
 void keyPressed(){
   Key.updateState(keyCode, true);
