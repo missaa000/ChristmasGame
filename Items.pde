@@ -13,7 +13,7 @@ public class Items{
   protected PImage  image;
   //アイテムが着地したフラグ
   protected boolean bottomFlag = false;
-  
+ 
   Items(int x, int y, int bottom, int nolma, int text){
     this.x        = x;
     this.y        = y;
@@ -34,6 +34,7 @@ public class Items{
         cnt++;
         bottomFlag = true;
       }
+      print(nolma);
     }
       
     image(image, x, y);

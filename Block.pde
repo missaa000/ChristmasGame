@@ -1,9 +1,9 @@
 //消していくブロック
 public class Block{
-  private int   x     = 15;
+  private int   x     = 8;
   private int   y     = 23;
   private float h     = 20;
-  private float w     = 40;
+  private float w     = 75;
   private boolean xy[][] = new boolean[y][x];
   private boolean blockFlag = true;
   //消した総数
@@ -13,21 +13,22 @@ public class Block{
   private int cnt     =  0;
   private int maxCnt  =  0;
   //ブロックの数
-  private int blockNum = 315;
+  private int blockNum = x*(y-2);
   
   void init(){
     for(int i = 0; i < y; i++){
       for(int j = 0; j < x; j++){       
-        //この条件分岐にするとケーキの順番をぐちゃぐちゃにしやすくなる
-        //if(i == 0 || 8 > j) xy[i][j] = false;
-        if(i == 0 || i == 1) xy[i][j] = false;
+        if(i == 0 || i == 1){
+          xy[i][j] = false;
+
+        }
         else xy[i][j] = true;
       }
     }
   }
   
   void display(){
-    for(int i = 1; i < y; i++){
+    for(int i = 0; i < y; i++){
       for(int j = 0; j < x; j++){  
         xy[i][j] = ball.hitcheck(i, j);
         //ボールが当たってなかったら
@@ -43,11 +44,11 @@ public class Block{
     //アイテムが1マスだけ見えた時のメッセージ
     if(present1.cnt + scarf.cnt + dish.cnt == 1 && textFlag) textType = 14;
     if(present1.cnt + scarf.cnt + dish.cnt == 2) textFlag = true;
-    if(total == 100) textType = 23;
-    if(total == 180) textType = 15;
-    if(total == 210) textType = 16;
-    if(total == 250) textType = 24;
-    if(total == 300) textType = 17;
+    if(total == 80) textType = 23;
+    if(total == 100) textType = 15;
+    if(total == 120) textType = 16;
+    if(total == 140) textType = 24;
+    if(total == 150) textType = 17;
     if(total == blockNum-1 && textFlag) textType = 18;
     
   }
@@ -62,50 +63,51 @@ public class Block{
   
   void itemBlock(int i, int j){
     //マフラーがあるブロックが崩れたら
-    if((17 < i && i < 21) && (5 < j && j < 9)){
+    if((18 < i && i < 22) && (3 <= j && j <= 4)){
       scarf.addCnt();
+      println("scarf = " + scarf.cnt);
     }
           
     //皿
-    else if((19 < i && i < 22) && (7 < j && j < 13)){
+    if((20 <= i && i <= 21) && (4 <= j && j <= 6)){
       dish.addCnt();
-      //println("dish = " + dish.cnt);
+      println("dish = " + dish.cnt);
     }
           
     //ケーキ下段
-    else if((12 < i && i < 17) && (8 < j && j < 12)){
+    if((11 <= i && i <= 15) && (4 <= j && j <= 6)){
       cake3.addCnt();
-      //println("cake3 = " + cake3.cnt);
+      println("cake3 = " + cake3.cnt);
     }
           
     //ケーキ中段
-    else if((5 < i && i < 8) && (8 < j && j < 12)){
+    if((6 <= i && i <= 7) && (4 <= j && j <= 6)){
       cake2.addCnt();
-      //println("cake2 = " + cake2.cnt);
+      println("cake2 = " + cake2.cnt);
     }
     
     //ケーキ上段
-    else if((1 < i && i < 4) && (9 < j && j < 11)){
+    if((i == 2) && (j == 5)){
       cake1.addCnt();
-      //println("cake1 = " + cake1.cnt);
+      println("cake1 = " + cake1.cnt);
     }
           
     //白プレゼント
-    else if((18 < i && i < 23) && (0 <= j && j < 3)){
+    if((y-5 <= i && i <= y) && (0 <= j && j <= 1)){
        present1.addCnt();
-       //println("pre1 = " + present1.cnt);
+       println("pre1 = " + present1.cnt);
     }
           
     //緑プレゼント
-     else if((12 < i && i < 19) && (2 < j && j < 6)){
+     if((y-11 <= i && i <= y-5) && (1 <= j && j <= 2)){
        present2.addCnt();
-       //println("pre2 = " + present2.cnt);
+       println("pre2 = " + present2.cnt);
      }
           
     //プレゼント兄弟
-    else if((1 < i && i < 15) && (0 < j && j < 4)){
+    if((2 <= i && i <= 11) && (0 <= j && j <= 1)){
        present3.addCnt();
-       //println("pre3 = " + present3.cnt);
+       println("pre3 = " + present3.cnt);
     }
   }
   

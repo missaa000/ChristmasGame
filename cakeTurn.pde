@@ -1,5 +1,4 @@
 //ケーキが落ちてくる順番を管理するクラス
-//このゲームでは需要あまりないけど配列の順番を変える方法を探すのが一番大変だった
 
 import java.util.List;
 //import java.util.ArrayList;
@@ -36,7 +35,7 @@ public class cakeTurn{
     }
     
     else if(top == 1){  //ケーキ１がtop
-      totalh = totalh + 11 - ith;
+      totalh = totalh + 20 - ith;
     }
     
     else if(top == 2){  //ケーキ２

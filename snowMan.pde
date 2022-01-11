@@ -52,24 +52,20 @@ public class snowMan{
   String nomalText(int scene, int textNum){
     if(scene == 1){
       if(textNum ==  0) text = "ハロー！　　　　　　メリークリスマス！";
-      if(textNum ==  1) text = "え？　もう過ぎた？";
-      if(textNum ==  2) text = "まあ細かいことは　　気にするなよ";
+      if(textNum ==  1) text = "え？　まだ早い？";
+      if(textNum ==  2) text = "まあ細かいことは　　気にしない！";
       if(textNum ==  3) text = "そんなことより上の　雪をどうにかしてくれないかな";
       if(textNum ==  4) text = "せっかくクリスマスの飾り付けをしたのに";
       if(textNum ==  5) text = "雪で埋もれ　　　　　ちゃったんだよ";
-      if(textNum ==  6) text = "雪玉でもぶつけて　　崩してね〜";
-      if(textNum ==  7) text = "じゃ　あとよろしく";
+      if(textNum ==  6) text = "雪玉でもぶつけて　　崩して！";
+      if(textNum ==  7) text = "矢印キーでバーを　　動かしてプレゼントを発掘してね";
       if(textNum ==  8) text = "え？　なんで宙に雪が浮いてるかって？";
-      if(textNum ==  9) text = "まあいいじゃないか　細かいことは";
-      if(textNum == 10) text = "あと　このゲームに　ついてなんだけど";
-      if(textNum == 11) text = "ブロックとかバーの　判定ガバガバなんだよね";
-      if(textNum == 12) text = "できる限り直した　　つもりなんだけど";
-      if(textNum == 13) text = "ご理解の方よろしくね";
-      if(textNum == 14){
+      if(textNum ==  10) text = "まあいいじゃないか　細かいことは";
+      if(textNum == 11){
         text = "じゃあはじめるよ〜";
         ball.init();
       }
-      if(textNum == 15){
+      if(textNum == 12){
         text = "end"; 
         ball.init();
       }
@@ -198,9 +194,21 @@ public class snowMan{
     if(scene == 25){
       if(textNum == 0) text = "おお〜　　　　　　　すっかり元どおり";
       if(textNum == 1) text = "これでこのゲームは　終わり";
-      if(textNum == 2) text = "こんなゲームを遊んでくれてありがとう";
-      if(textNum == 3) text = "じゃあね";
+      if(textNum == 2) text = "飾り付け直して　　　くれてありがとう";
+      if(textNum == 3) text = "じゃあね！";
       if(textNum == 4){
+        stop();
+        exit();
+      }
+    }
+    if(scene == 26){
+      if(textNum == 0) text = "おお〜　　　　　　　すっかり元どおり";
+      if(textNum == 1) text = "……";
+      if(textNum == 2) text = "いや全然　　　　　　元どおりじゃなくない！？";
+      if(textNum == 3) text = "ちょっと！なんで　　プレゼント浮いたりしてるの！？";
+      if(textNum == 4) text = "へんなところ　　　　いじったでしょ！";
+      if(textNum == 5) text = "やり直し！　　　　　ちゃんとやり直して！";
+      if(textNum == 6){
         stop();
         exit();
       }
@@ -212,10 +220,10 @@ public class snowMan{
   //ゲームオーバー時の特殊なセリフ
   String uniqueText(int scene, int textNum){
     if(scene == 1){
-      if(textNum == 0) text = "あー　　　　　　　　ブロック崩しって　　やったことある？";
-      if(textNum == 1) text = "バーを動かして　　　ボールを跳ね返して";
+      if(textNum == 0) text = "あ　　　　　　　　　ブロック崩しって　　やったことなかった？";
+      if(textNum == 1) text = "矢印キーで　　　　　バーを動かして　　　ボールを跳ね返して";
       if(textNum == 2) text = "全部のブロックに　　ボールを当てたら　　終わりだよ";
-      if(textNum == 3) text = "じゃあ頑張って〜";
+      if(textNum == 3) text = "頑張って〜";
       if(textNum == 4) text = "end";
     }
     
@@ -266,14 +274,11 @@ public class snowMan{
     }
     
     if(scene == 10){
-      if(textNum == 0) text = "あー　なんかさっき　変な消え方したのに　気づいたかな";
-      if(textNum == 1) text = "まあ多少こういう　　バグがあった方が　　面白いでしょ";
-      if(textNum == 2) text = "なんてね";
-      if(textNum == 3) text = "次ゲームを作ることがあればその時は";
-      if(textNum == 4) text = "もう少しマシなものにするよ";
-      if(textNum == 5) text = "もしかしたらまだ　　見ていないバグが　　あったりして";
-      if(textNum == 6) text = "僕も気づいて　　　　ないようなさ";
-      if(textNum == 7){
+      if(textNum == 0) text = "え？　なんかさっき　一気に雪が消えた　　って？";
+      if(textNum == 1) text = "君の世界は　　　　　雪が一気に　　　　　消えないの？";
+      if(textNum == 2) text = "それは……";
+      if(textNum == 3) text = "すごく不便だね！";
+      if(textNum == 4){
         text = "end";
         block.changeFlag();
       }
@@ -283,10 +288,7 @@ public class snowMan{
       if(textNum == 0) text = "え？このゲーム　　　終わりがあるのかって？";
       if(textNum == 1) text = "当たり前だろ　何回　テストプレイしたと　思ってるの";
       if(textNum == 2) text = "もう少し　　　　　　頑張ってみてよ";
-      if(textNum == 3) text = "あ　もしかして　　　すり抜けたりしてるかな";
-      if(textNum == 4) text = "それは......";
-      if(textNum == 5) text = "うん　";
-      if(textNum == 6){
+      if(textNum == 3){
         text = "end";
         ball.changeBallFlag();
       }

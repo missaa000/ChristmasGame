@@ -95,11 +95,11 @@ public class Ball{
       textType = 4;
     }
     
-    //if(total == time4){
-    //  vx       = 7;
-    //  vy       = 7;
-    //  textType = 5;
-    //}
+    if(total == time4){
+      vx       = 7;
+      vy       = 7;
+      textType = 5;
+    }
     
     speedFlag  = false;
   }
@@ -119,6 +119,7 @@ public class Ball{
           block.itemBlock(i, j);
           barFlag = true;
           wallHit = 0;
+          if(!SE.isPlaying()) SE.play(0);
           //println(wallHit);
       }
       
@@ -130,6 +131,7 @@ public class Ball{
           block.itemBlock(i, j);
           barFlag = true;
           wallHit = 0;
+          if(!SE.isPlaying()) SE.play(0);
           //println(wallHit);
       }
       
@@ -141,6 +143,7 @@ public class Ball{
           block.itemBlock(i, j);
           barFlag = true;
           wallHit = 0;
+          if(!SE.isPlaying()) SE.play(0);
           //println(wallHit);
       }
       
@@ -152,6 +155,8 @@ public class Ball{
           block.itemBlock(i, j);
           barFlag = true;
           wallHit = 0;
+          if(!SE.isPlaying()) SE.play(0);
+      
           //println(wallHit);
       }
       

@@ -16,25 +16,26 @@ int     textType;
 //ライトのタイム
 int     time;
 //音楽関連
-//Minim minim;
-//AudioPlayer song;
+Minim minim = new Minim(this);;
+AudioPlayer song;
+AudioPlayer SE;
 
 //速くなるタイミング
-public static final int time1 =  30;
-public static final int time2 =  80;
-public static final int time3 = 230;
-//public static int time4 = 200;
+public static final int time1 =  20;
+public static final int time2 =  50;
+public static final int time3 = 80;
+public static final int time4 = 120;
 
 Ball     ball     = new Ball();
 Block    block    = new Block();
-Items    cake1    = new Cakes(395,  30,  560,  2, 11, 1, 38);
+Items    cake1    = new Cakes(395,  30,  560,  1, 11, 1, 38);
 Items    cake2    = new Cakes(377, 100,  590,  6, 10, 2, 55);
-Items    cake3    = new Cakes(360, 250,  630, 12,  9, 3, 73); 
-Items    dish     = new Cakes(340, 400,  680,  9, 13, 0, 37);
-Items    present1 = new Items( 10, 350,  610, 12,  6);
-Items    present2 = new Items(120, 250,  590, 18,  7);
-Items    present3 = new Items( 40,  30,  450, 37,  8);
-Items    scarf    = new Items(245, 350,  595,  9, 12);
+Items    cake3    = new Cakes(360, 250,  630, 15,  9, 3, 73); 
+Items    dish     = new Cakes(340, 400,  680,  6, 13, 0, 37);
+Items    present1 = new Items( 10, 350,  610, 10,  6);
+Items    present2 = new Items(120, 250,  590, 14,  7);
+Items    present3 = new Items( 40,  30,  450, 20,  8);
+Items    scarf    = new Items(245, 350,  595,  6, 12);
 Player   player   = new Player();
 cakeTurn caketurn = new cakeTurn();
 keyState Key      = new keyState();
@@ -43,44 +44,12 @@ snowMan  snowman  = new snowMan();
 void setup(){
   size(600, 800);
   frameRate(60);
-  
-  back   = loadImage("image/back.png");
-  object = loadImage("image/object.png");
-  
-  cake1.image    = object.get(458,  99,  45,  38);
-  cake2.image    = object.get(444, 229,  80,  55);
-  cake3.image    = object.get(426, 368, 118,  73);
-  dish.image     = object.get(406, 584, 157,  37);
-  present1.image = object.get( 50,  55, 100, 110);
-  present2.image = object.get( 35, 235, 120, 140);
-  present3.image = object.get( 35, 435, 120, 270);
-  scarf.image    = object.get(245, 410, 100,  90);
-  snowman.face   = object.get(271, 569,  30,  30);
-  
-  Key.init();
-  block.init();
-  
-  //日本語テキスト読み込み
-  font     = createFont("MSP GOTHIC", 40, true);
-  //ゲームオーバー時のランダムなテキスト表示
-  textRand = 0;
-  //文字表示のタイマー
-  timer    = 0;
-  time     = 0;
-  //0:無言　その他喋る
-  textType = 0;
-  textFlag = true;
-  textFont(font);  
-  //音楽ロード
-  //minim    = new Minim(this);
-  //song     = minim.loadFile("music/ChristmasDay.mp3");
-  
-  //初めはタイトル画面
-  gameStatus = 0;
+  setUp init = new setUp();
+  init.init_setup();
 }
 
-void draw(){
-  //if(!song.isPlaying())song.play(0);
+void draw(){  
+  if(!song.isPlaying()) song.play(0);
   
   image(back, 0, 0);
   //itemDispはitem表示をまとめた関数です
@@ -120,16 +89,16 @@ void gameTitle(){
   block.display();
   //タイトル文字
   fill(100, 100, 255);
-  rect(120, 120, 360, 80);
+  rect(150, 120, 300, 120);
   
   fill(255);
   textSize(30);
-  text("いい感じのタイトル", 160, 170);
+  text("クリスマスの\nブロック崩し", 190, 170);
   
-  //操作説明
+  //クレジット
   fill(0);
-  textSize(20);
-  text("Enter:会話を進める\n矢印キー:バーを動かす", 10, 550);
+  textSize(10);
+  text("music:MMT STUDIO(https://mmt38.info/kiyaku/)\n魔王魂(https://maou.audio/category/se/se-system/)", 10, 750);
   
   //press enter key 点滅表示
   if(timer < 32){
@@ -256,7 +225,8 @@ void textDisplay(){
   
   //ゲームクリア
   else if(gameStatus == 3){
-    snowman.textDisp("nomal", 25);
+    if(block.blockNum == 168) snowman.textDisp("nomal", 25);
+    else snowman.textDisp("nomal", 26);
   }
   
   //ゲームオーバー
@@ -284,7 +254,7 @@ void textDisplay(){
 
 void itemDisplay(){
   //0->1->2->3の順で上書き表示される
-  //これ以外どう書けばいいか思いつかなかった
+  //これ以外どう書けばいいか思いつかなかった、思いついたら変更
   if(caketurn.fallTurn.get(0) == 0) dish.display();
   if(caketurn.fallTurn.get(0) == 3) cake3.display();
   if(caketurn.fallTurn.get(0) == 2) cake2.display();
@@ -308,7 +278,6 @@ void itemDisplay(){
   scarf.display();
 }
 
-//JIGOKU
 void right(){
   time++;
   
@@ -370,11 +339,11 @@ void right(){
 
 }
 
-//void stop(){
-  //song.close();
-  //minim.stop();
-  //super.stop();
-//}
+void stop(){
+  song.close();
+  minim.stop();
+  super.stop();
+}
 
 void keyPressed(){
   Key.updateState(keyCode, true);
