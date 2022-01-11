@@ -1,4 +1,5 @@
 //落ちてくるアイテムのあれこれ
+
 public class Items{
   protected int     x;
   protected int     y;
@@ -34,7 +35,7 @@ public class Items{
         cnt++;
         bottomFlag = true;
       }
-      print(nolma);
+      //print(nolma);
     }
       
     image(image, x, y);

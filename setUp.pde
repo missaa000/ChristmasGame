@@ -1,3 +1,5 @@
+//ゲームの初期化
+
 public class setUp{
   void init_setup(){
     back   = loadImage("image/back.png");
@@ -11,7 +13,7 @@ public class setUp{
     present2.image = object.get( 35, 235, 120, 140);
     present3.image = object.get( 35, 435, 120, 270);
     scarf.image    = object.get(245, 410, 100,  90);
-    snowman.face   = object.get(271, 569,  30,  30);
+    a_c.face       = object.get(271, 569,  30,  30);
     
     Key.init();
     block.init();

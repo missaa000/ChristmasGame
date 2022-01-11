@@ -15,40 +15,12 @@ public class Cakes extends Items{
     this.name = name;
     this.h = h;
   }
-  
-  //下にあるものによってテキストを変える
-    void changeText(){    
-    //下は床
-    if(caketurn.top == 4){
-      //落ちてくるのがケーキなら
-      if(name != 0) text = 19;
-    }
-    
-    //下はcake1
-    else if(caketurn.top == 1){
-      text = 21;
-    }
-    
-    //下はcake2
-    else if(caketurn.top == 2){
-      //ケーキ３なら
-      if(name == 3) text = 20;
-      //皿なら
-      else if(name == 0) text = 22;
-    }
-    
-    //下はcake3
-    else if(caketurn.top == 3){
-      //皿なら
-      if(name == 0) text = 22;
-    }
-  }
 
-  //落ちるアニメーション
+  //アイテム落下
   void display(){
     if(cnt == nolma){
       if(fallFlag){
-        changeText();
+        text = t_c.changeText(name);
         bottom = caketurn.bottom_topChange(name, this.h);
         fallFlag = false;
       }

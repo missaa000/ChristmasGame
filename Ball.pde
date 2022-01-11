@@ -1,4 +1,5 @@
 //雪玉の移動
+
 public class Ball{
   private float x       = 300;
   private float y       = 500;
@@ -63,7 +64,7 @@ public class Ball{
     if(this.y > height){
       player.overCnt();
       //println(player.dropCnt);
-      //適当なメッセージ
+      //ランダムメッセージの決定
       textRand   = (int)random(4, 10);
       gameStatus = 4;
     }

@@ -1,20 +1,16 @@
 //雪だるまのテキスト
 //タイトルとゲームオーバーで喋る
+
 public class snowMan{
   private String text;
   private int    textNum = 0;
-  //口パクの時間
-  private int    faceTimer = 0;
-  private PImage face;
+  
   
   void textDisp(String type, int scene){    
     fill(255);
     rect(390, 490, 150, 80, 5);
     
-    //口パクの処理
-    faceTimer++;
-    if(faceTimer < 30) image(face, 271, 569);
-    else if(60 <= faceTimer) faceTimer = 0; 
+    a_c.snowmanMouth();
     
     if(type == "nomal"){
       this.text = snowman.nomalText(scene, textNum);

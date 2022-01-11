@@ -1,4 +1,5 @@
 //プレイヤーがキー操作で動かすバー
+
 public class Player {
   private float x =   250;
   private float y =   750;
